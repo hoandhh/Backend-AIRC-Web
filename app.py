@@ -6,12 +6,16 @@ from routes.image_controller import image_routes
 from routes.admin_controller import admin_routes
 from flask_jwt_extended import JWTManager
 import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb+srv://hoan:hoan@hoan.kqxj5.mongodb.net/airc'
+    'host': os.getenv('MONGODB_URI')
 }
-app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Thay đổi thành một khóa bí mật thực tế
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=1)
 
 # Khởi tạo JWT

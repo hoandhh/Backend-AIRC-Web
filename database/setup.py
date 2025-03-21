@@ -20,7 +20,7 @@ def setup_migrations(app):
     client = MongoClient(mongo_uri)
     
     # Xác định tên cơ sở dữ liệu từ URI
-    db_name = 'image_management_system'  # Tên mặc định nếu không được chỉ định trong URI
+    db_name = 'airc'  # Tên mặc định nếu không được chỉ định trong URI
     if '/' in mongo_uri.split('@')[-1]:
         parts = mongo_uri.split('/')
         if len(parts) > 3 and parts[3]:
